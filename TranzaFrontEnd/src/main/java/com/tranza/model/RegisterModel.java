@@ -1,13 +1,23 @@
 package com.tranza.model;
 
+
+import java.io.Serializable;
+
+
 import com.tranza.ecommerce.model.Address;
 import com.tranza.ecommerce.model.User;
 
-public class RegisterModel {
+public class RegisterModel implements Serializable{
 	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private User user;
 	
-	private Address address;
+	private Address billing;
 
 	public User getUser() {
 		return user;
@@ -17,13 +27,15 @@ public class RegisterModel {
 		this.user = user;
 	}
 
-	public Address getAddress() {
-		return address;
+	public Address getBilling() {
+		return billing;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setBilling(Address billing) {
+		this.billing = billing;
 	}
+
+	
 	
 
 }
