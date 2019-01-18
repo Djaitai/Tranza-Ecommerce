@@ -1,33 +1,53 @@
 package com.tranza.ecommerce.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="user")
-public class User {
+public class User implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 	
 	@Column(name="first_name")
+	@NotBlank(message = "Please enter first name!")
 	private String firstName;
 	
 	@Column(name="last_name")
+	@NotBlank(message = "Please enter last name!")
 	private String lastName;
 	
 	@Column(name="email_id")
+	@NotBlank(message = "Please enter email address!") 
 	private String emailId;
 	
 	@Column(name="contact_number")
+	@NotBlank(message = "Please enter contact number!")
 	private String contactNumber;
 	private String role;
+	
+	@NotBlank(message = "Please enter password!")
 	private String password;
+	
+	@Transient
+	private String confirmPassword;
+	
 	private boolean enabled = true;
 	
 	//Add more fields
@@ -73,6 +93,13 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 	public boolean isEnabled() {
 		return enabled;

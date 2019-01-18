@@ -1,19 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow.xsd">
-                          
-     
-      <!-- view the signup-personal page-->
-	<view-state id="personal" view="flows/register/signup-personal"></view-state>
 
 
-<end-state id="home" view="externalRedirect:contextRelative:/"/>
 
-<!-- global transition -->
+	<var name="user" class="com.tranza.ecommerce.model.User"/>
+	<var name="billing" class="com.tranza.ecommerce.model.Address"/>
+
+	<!-- view the signup-personal page -->
+	<!-- is the state -->
+	<view-state id="personal" view="flows/register/signup-personal" model="user">
+		<transition on="billing" to="billing" />
+	</view-state>
+
+	<view-state id="billing" view="flows/register/signup-billing" model="billing">
+		<transition on="personal" to="personal"/>
+		<transition on="confirm" to="confirm"/>
+	</view-state>
+
+	<view-state id="confirm" view="flows/register/signup-confirm">
+		<transition on="personal" to="personal"/>
+		<transition on="billing" to="billing"/>
+		<transition on="success" to="success"/>
+	</view-state>
+
+	<!-- End state -->
+	<end-state id="home" view="externalRedirect:contextRelative:/" />
+	<end-state id="success" view="flows/register/signup-success" />
+
+	<!-- global transition -->
 	<global-transitions>
-		<transition on="home" to="home"  />
-</global-transitions>
+		<transition on="home" to="home" />
+	</global-transitions>
 
 </flow>

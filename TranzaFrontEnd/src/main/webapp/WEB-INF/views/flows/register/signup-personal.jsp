@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %> 
 
 <spring:url var="css" value="resources/css" />
 <spring:url var="js" value="resources/js" />
@@ -22,90 +23,148 @@
 <meta charset="ISO-8859-1">
 <title>Tranza-ecommerce - ${title }</title>
 
-
-
-<!-- Bootstrap core CSS -->
-<link href="${css }/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="${css }/shop-homepage.css" rel="stylesheet">
-
-<!-- Bootstrap theme -->
-<link href="${css }/bootstrap.them.min.css" rel="stylesheet">
-
-
-<script>
-	window.menu = '${title }'; // Not Working
-	window.contextRoot = '${contextRoot}'
-</script>
-
-
+	<!-- Newly added and then work check it back and compare it to otheras links -->
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-	crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	crossorigin="anonymous"></script>
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-	integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-	crossorigin="anonymous"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-	integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-	crossorigin="anonymous"></script>
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	
+	<style>
+	html{
+		font-size: 100%
+	}
 
-
+</style>
+	
+	
 </head>
 <body>
-
-
-
-	<div class="wrapper">
-
-<div class="nav navbar-inverse">
-<div class="container">
-<div class="navbar-header">
-<a href="${flowExecutionUrl }&_eventId_home">Home</a>
-</div>
-</div>
-
-</div>
-		<!--  Page content -->
-
-		<div class="content">
-		
+	<%@ include file="../shared/flows-header.jsp"%>
+	<div class="container">
 		<div class="container">
-		<h3>Hello world</h3>
+
+
+			<div class="row">
+
+				<div class="col-md-6 col-md-offset-3">
+
+					<div class="panel panel-primary">
+
+						<div class="panel-heading">
+							<h4>Sign Up - Personal</h4>
+						</div>
+
+						<div class="panel-body">
+
+							<sf:form method="POST" modelAttribute="user" class="form-horizontal" id="registerForm">
+
+
+								<div class="form-group">
+									<label class="control-label col-md-4">First Name</label>
+									<div class="col-md-8">
+										 <sf:input type="text" path="firstName" class="form-control"
+											placeholder="First Name" />
+										<sf:errors path="firstName" cssClass="help-block" element="em" />
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<label class="control-label col-md-4">Last Name</label>
+									<div class="col-md-8">
+										<sf:input type="text" path="lastName" class="form-control"
+											placeholder="Last Name" />
+										<sf:errors path="lastName" cssClass="help-block" element="em" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label col-md-4">Email</label>
+									<div class="col-md-8">
+										<sf:input type="text" path="emailId" class="form-control"
+											placeholder="abc@zyx.com" />
+										<sf:errors path="emailId" cssClass="help-block" element="em" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label col-md-4">Contact Number</label>
+									<div class="col-md-8">
+										<sf:input type="text" path="contactNumber"
+											class="form-control" placeholder="+225 XX XX XX XX" maxlength="10" />
+										<sf:errors path="contactNumber" cssClass="help-block"
+											element="em" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label col-md-4">Password</label>
+									<div class="col-md-8">
+										<sf:input type="password" path="password" class="form-control"
+											placeholder="Password" />
+										<sf:errors path="password" cssClass="help-block" element="em" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label col-md-4">Confirm Password</label>
+									<div class="col-md-8">
+										<sf:input type="password" path="confirmPassword"
+											class="form-control" placeholder="Re-type password" />
+										<sf:errors path="confirmPassword" cssClass="help-block"
+											element="em" />
+									</div>
+								</div>
+								
+								
+								<!-- radio button using bootstrap of radio-inline  -->
+								<div class="form-group">
+									<label class="control-label col-md-4">Select Role</label>
+									<div class="col-md-8">
+										<label class="radio-inline">
+										 <sf:radiobutton path="role" value="USER" checked="checked" /> User
+										</label> <label class="radio-inline"> 
+										<sf:radiobutton
+												path="role" value="SUPPLIER" /> Supplier
+										</label>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="col-md-offset-4 col-md-8">
+										<button type="submit" name="_eventId_billing"
+											class="btn btn-primary">
+											Next - Billing <span
+												class="glyphicon glyphicon-chevron-right"></span>
+										</button>
+									</div>
+								</div>
+
+
+							</sf:form>
+
+
+						</div>
+
+
+					</div>
+
+
+				</div>
+
+
+			</div>
+
+
 		</div>
-		
-		
-		
-		
-		
-		
-		
-		<%@include file="../../header/footer.jsp"%>
-
-		<!-- Bootstrap core JavaScript -->
-		<script src="${js }/jquery.min.js"></script>
-
-		<!-- Jquery validator -->
-		<script src="${js}/jquery.validate.js"></script>
-
-		<script src="${js }/bootstrap.bundle.min.js"></script>
-
-		<!-- DataTable plugin -->
-		<script src="${js }/jquery.dataTables.js"></script>
-
-		<!-- Self coded js file -->
-		<script src="<c:url value="/resources/js/mainApp.js" />"></script>
-		<%-- <script src="${js }/myApp.js"> --%>
-		</script>
 
 	</div>
+
+
+	<%@ include file="../shared/flows-footer.jsp"%>
 </body>
 
-</body>
 </html>

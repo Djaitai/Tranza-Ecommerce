@@ -128,4 +128,12 @@ public class HomeController {
 		return modelAndView;
 		
 	}
+	
+	/** Having similar mapping to our flow id **/
+	@RequestMapping(value = "/register")
+	public ModelAndView register() {
+		ModelAndView modelAndView = new ModelAndView("home");
+		modelAndView.addObject("title" , "About Us");
+		return modelAndView;
+	}
 }
