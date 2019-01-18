@@ -36,7 +36,10 @@
 	html{
 		font-size: 100%
 	}
-
+	
+	.help-block{
+		color: #E71C23;
+	}
 </style>
 	
 	

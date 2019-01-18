@@ -1,6 +1,8 @@
 package com.tranza.handler;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.binding.message.MessageBuilder;
+import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 
 import com.tranza.ecommerce.dao.UserDAO;
@@ -28,6 +30,28 @@ public class RegisterHandler {
 
 		registerModel.setBilling(billing);
 	}
+	
+	
+	public String validateUser(User user, MessageContext error) {
+		  String transitionValue = "success";
+		  
+		  //Checking if password match confirm password
+		   if(!user.getPassword().equals(user.getConfirmPassword())) {
+		    error.addMessage(new MessageBuilder()
+		    		.error()
+		    		.source("confirmPassword").defaultText("Password does not match confirm password!")
+		    		.build());
+		    transitionValue = "failure";    
+		   } 
+
+		   // Check the uniqueness of emailId
+		   if(userDAO.getUserByEmail(user.getEmailId())!=null) {
+		    error.addMessage(new MessageBuilder().error().source(
+		      "emailId").defaultText("Email address is already used!").build());
+		    transitionValue = "failure";
+		   }
+		  return transitionValue;
+		}
 	
 	 public String saveAll(RegisterModel registerModel) {
 		  String transitionValue = "success";

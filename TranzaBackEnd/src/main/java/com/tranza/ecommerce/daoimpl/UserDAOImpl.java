@@ -19,7 +19,7 @@ public class UserDAOImpl implements UserDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	//@Override
+	@Override
 	public User getUserByEmail(String emailId) {
 		String selectQuery = "FROM User WHERE emailId = :emailId";
 		try {
