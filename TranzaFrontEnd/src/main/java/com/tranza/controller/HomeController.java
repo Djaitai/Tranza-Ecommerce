@@ -1,8 +1,14 @@
 package com.tranza.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -140,7 +146,8 @@ public class HomeController {
 	
 	/** Login **/
 	@RequestMapping(value ="/login")
-	public ModelAndView login(@RequestParam(name="error" , required = false) String error)
+	public ModelAndView login(@RequestParam(name="error" , required = false) String error ,
+							  @RequestParam(name="logout" , required = false) String logout)
 	{
 		ModelAndView modelAndView = new ModelAndView("login");
 		
@@ -149,9 +156,32 @@ public class HomeController {
 			modelAndView.addObject("message" , "Ivalid username and password");
 		}
 		
+		if(logout!=null)
+		{
+			modelAndView.addObject("logout" , "User has successfully logged out ");
+		}
+		
 		modelAndView.addObject("title", "Login");
 		return modelAndView;
 	}
+	
+	
+	/** Logout**/
+	//it return String bcoz we redirect it to login
+	@RequestMapping(value ="/perform-logout")
+	public String logout(HttpServletRequest request , HttpServletResponse response)
+	{
+		//First we going to fetch the authentication
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		
+		//if the user is authenticated - Authentication object is not going to be null
+		if(authentication!=null) {
+			new SecurityContextLogoutHandler().logout(request, response, authentication);
+		}
+		
+		return "redirect:/login?logout";
+	}
+	
 	
 	/*** Access denied page**/
 	@RequestMapping(value ="/access-denied")
@@ -163,4 +193,6 @@ public class HomeController {
 		modelAndView.addObject("errorDescription", "Your are not authorized to viewthis page");
 		return modelAndView;
 	}
+	
+
 }

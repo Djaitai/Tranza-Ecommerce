@@ -109,25 +109,34 @@
 				</c:choose>
 
 				<!-- Disable add to cart button if no stock available -->
-				<c:choose>
-
-					<c:when test="${product.quantity < 1 }">
-						<a href="javascript:void(0)" class="btn btn-warning disabled"><strike>
-								<span class="glyphicon glyphicon-shopping-cart"></span>Add to
-								cart
-						</strike> </a>
-					</c:when>
-
-					<c:otherwise>
-						<a href="${contextRoot }/cart/add/${product.productId }/product"
-							class="btn btn-warning"> <span
-							class="glyphicon glyphicon-shopping-cart"></span>Add to cart
-						</a>
-					</c:otherwise>
-
-
-				</c:choose>
-
+				<security:authorize access="hasAuthority('USER')">
+					<c:choose>
+	
+						<c:when test="${product.quantity < 1 }">
+							<a href="javascript:void(0)" class="btn btn-warning disabled"><strike>
+									<span class="glyphicon glyphicon-shopping-cart"></span>Add to
+									cart
+							</strike> </a>
+						</c:when>
+	
+						<c:otherwise>
+							<a href="${contextRoot }/cart/add/${product.productId }/product"
+								class="btn btn-warning"> <span
+								class="glyphicon glyphicon-shopping-cart"></span>Add to cart
+							</a>
+						</c:otherwise>
+	
+	
+					</c:choose>
+				</security:authorize>
+				
+				<security:authorize access="hasAuthority('ADMIN')">
+				
+					<a href="${contextRoot }/manage/${product.productId }/product"
+								class="btn btn-warning"> <span
+								class="glyphicon glyphicon-pencil"></span>Edit
+							</a>
+				</security:authorize>
 
 				<a href="${contextRoot }/show/all/products" class="btn btn-success">Back</a>
 

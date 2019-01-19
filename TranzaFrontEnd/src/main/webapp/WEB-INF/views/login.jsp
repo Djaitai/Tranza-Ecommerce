@@ -80,7 +80,7 @@
 			
    <div class="container">
     
-    <!-- Wil be displayed if credentials are wrong -->
+    <!-- Will be displayed if credentials are wrong -->
    	<c:if test="${not empty message}">
 		<div class="row">
 			<div class="col-xs-12 col-md-offset-3 col-md-6">
@@ -89,6 +89,7 @@
 		</div>
 	</c:if>
          
+     <!-- Will be displayed only when user has logged out -->
    	<c:if test="${not empty logout}">
 		<div class="row">
 			<div class="col-xs-12 col-md-offset-3 col-md-6">
