@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -46,6 +48,7 @@ public class User implements Serializable {
 	private String role;
 	
 	@NotBlank(message = "Please enter password!")
+	@Size(min = 6 , max=60)
 	private String password;
 	
 	@Transient

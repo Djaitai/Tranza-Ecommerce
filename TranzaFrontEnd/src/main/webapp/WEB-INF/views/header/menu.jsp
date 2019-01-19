@@ -42,6 +42,27 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li id="register" class="nav-item"><a class="nav-link"href="${contextRoot }/register">Sign Up</a></li>
 					<li id="login" class="nav-item"><a class="nav-link"href="${contextRoot }/login">Login</a></li>
+					<li id="login" class="dropdown">
+						<a class="btn btn-warning dropdown-toggle 
+							"href="javascript:void(0)" id="dropdownMenu1"
+								data-toggle="dropdown">Full Name
+								<span class="caret"></span>
+								</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="${contextRoot }/cart">
+										<span class="glyphicon glyphicon-shopping-cart"></span>
+										<span class="badge">0</span>
+										- &#8377; 0.0
+									</a>
+								</li>
+								<li class="divider" role="separator"></li>
+								<li>
+									<a href="${contextRoot }/logout">Logout</a>
+								</li>
+							</ul>
+					</li>
+				
 				</ul>
 			</div>
 		</div>

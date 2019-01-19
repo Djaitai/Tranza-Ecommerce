@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tranza.ecommerce.dao.CategoryDAO;
@@ -134,6 +135,32 @@ public class HomeController {
 	public ModelAndView register() {
 		ModelAndView modelAndView = new ModelAndView("home");
 		modelAndView.addObject("title" , "About Us");
+		return modelAndView;
+	}
+	
+	/** Login **/
+	@RequestMapping(value ="/login")
+	public ModelAndView login(@RequestParam(name="error" , required = false) String error)
+	{
+		ModelAndView modelAndView = new ModelAndView("login");
+		
+		if(error!=null)
+		{
+			modelAndView.addObject("message" , "Ivalid username and password");
+		}
+		
+		modelAndView.addObject("title", "Login");
+		return modelAndView;
+	}
+	
+	/*** Access denied page**/
+	@RequestMapping(value ="/access-denied")
+	public ModelAndView accessDenied()
+	{
+		ModelAndView modelAndView = new ModelAndView("error");
+		modelAndView.addObject("title", "403 - Access Denied");
+		modelAndView.addObject("errorTitle", "Aha! - Caught you");
+		modelAndView.addObject("errorDescription", "Your are not authorized to viewthis page");
 		return modelAndView;
 	}
 }

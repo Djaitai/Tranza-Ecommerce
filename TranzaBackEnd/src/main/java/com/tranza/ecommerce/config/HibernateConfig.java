@@ -103,8 +103,8 @@ public class HibernateConfig {
     
     
     @Autowired
-	@Bean(name="dataSource")
-	public DataSource getH2DataSource()
+	@Bean("dataSource")
+	public DataSource getDataSource()
 	{
 		System.out.println("Data Source Method");
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();

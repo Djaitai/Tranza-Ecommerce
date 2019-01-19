@@ -27,8 +27,21 @@ $(function() {
 	default:
 		$('#home').addClass('active');
 	}
+	
+	
+	//to tackle the csrf token
+	// for handling CSRF token
+	var token = $('meta[name="_csrf"]').attr('content');
+	var header = $('meta[name="_csrf_header"]').attr('content');
+	
+	if((token!=undefined && header !=undefined) && (token.length > 0 && header.length > 0)) {		
+		// set the token header for the ajax request
+		$(document).ajaxSend(function(e, xhr, options) {			
+			xhr.setRequestHeader(header,token);			
+		});				
+}
 
-	// Caode for jquery dataTable
+	// Code for jquery dataTable
 	// Create a data set
 
 	var $table = $('#productListTable');
@@ -347,4 +360,47 @@ $(function() {
 	//****************************************************
 	
 	
+	
+	
+	//**********************************
+	
+	//******** Validate code for login form ***********************************
+	
+	var $loginForm = $('#loginForm');
+	
+	if($loginForm.length){
+		$loginForm.validate({
+			rules : {
+				username : {
+					required: true,
+					email: true					
+				},
+				
+				password: {
+					required: true
+					
+				}
+			},
+			
+			messages: {
+				username : {
+					required: 'Please enter the user name!',
+					email: 'please enter valid email address'
+				},
+				
+				password: {
+					required: 'Please enter the password!'
+				}
+			}
+			,
+			
+			errorElement: 'em',
+			errorPlacement: function(error, element){
+				//Add the class of help-block
+				error.addClass('help-block');
+				//Add the error after the input element
+				error.insertAfter(element);
+			}			
+		});
+	}
 });

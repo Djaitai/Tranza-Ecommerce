@@ -16,6 +16,9 @@
 <html>
 <head>
 
+<!-- Allow disable and enable product -->
+<meta name="_csrf" content="${_csrf.token }">
+<meta name="_csrf_header" content="${_csrf.headerName }">
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
