@@ -55,7 +55,7 @@
 			<div class="col-xs-12">
 				<ol class="breadcrumb">
 					<li><a href="${contextRoot }/home">Home</a></li>
-					<li><a href="${contextRoot }/show/all/products">Products</a></li>
+					<li><a href="${contextRoot }/show/all/products">Produits</a></li>
 					<li class="active">${product.productName }</li>
 				</ol>
 			</div>
@@ -86,7 +86,7 @@
 				<hr>
 
 				<h4>
-					Price: <strong> &#8377; ${product.unitPrice } /-</strong>
+					Price: <strong> ${product.unitPrice } CFA /-</strong>
 				</h4>
 				<hr style="height: 5px; background-color: #B83227;">
 
@@ -96,13 +96,13 @@
 
 					<c:when test="${product.quantity < 1 }">
 						<h6>
-							Qty. Available: <span style="color: #FF3031">Out of Stock!</span>
+							Qty. Disponible: <span style="color: #FF3031">En rupture de stock!</span>
 						</h6>
 					</c:when>
 
 					<c:otherwise>
-						<h6 style="color: #019031">Qty. Available: ${product.quantity }
-							- in stock</h6>
+						<h6 style="color: #019031">Qty. Disponible: ${product.quantity }
+							- en stock</h6>
 					</c:otherwise>
 
 
@@ -114,15 +114,14 @@
 	
 						<c:when test="${product.quantity < 1 }">
 							<a href="javascript:void(0)" class="btn btn-warning disabled"><strike>
-									<span class="glyphicon glyphicon-shopping-cart"></span>Add to
-									cart
+									<span class="glyphicon glyphicon-shopping-cart"></span>Ajouter au chariot
 							</strike> </a>
 						</c:when>
 	
 						<c:otherwise>
 							<a href="${contextRoot }/cart/add/${product.productId }/product"
 								class="btn btn-warning"> <span
-								class="glyphicon glyphicon-shopping-cart"></span>Add to cart
+								class="glyphicon glyphicon-shopping-cart"></span>Ajouter au chariot
 							</a>
 						</c:otherwise>
 	
@@ -134,11 +133,11 @@
 				
 					<a href="${contextRoot }/manage/${product.productId }/product"
 								class="btn btn-warning"> <span
-								class="glyphicon glyphicon-pencil"></span>Edit
+								class="glyphicon glyphicon-pencil"></span>Editez
 							</a>
 				</security:authorize>
 
-				<a href="${contextRoot }/show/all/products" class="btn btn-success">Back</a>
+				<a href="${contextRoot }/show/all/products" class="btn btn-success">Retour</a>
 
 			</div>
 

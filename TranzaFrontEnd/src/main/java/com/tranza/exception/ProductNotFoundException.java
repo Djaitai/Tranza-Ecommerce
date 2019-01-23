@@ -11,7 +11,7 @@ public class ProductNotFoundException extends Exception implements Serializable{
 	private String message;
 	
 	public ProductNotFoundException() {
-		this("Product is not available!");
+		this("Le produit n'est pas disponible!");
 	}
 	
 	public ProductNotFoundException(String message) {

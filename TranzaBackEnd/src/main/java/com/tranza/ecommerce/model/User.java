@@ -28,26 +28,27 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="user_id")
 	private int userId;
 	
 	@Column(name="first_name")
-	@NotBlank(message = "Please enter first name!")
+	@NotBlank(message = "Entrez votre Nom!")
 	private String firstName;
 	
 	@Column(name="last_name")
-	@NotBlank(message = "Please enter last name!")
+	@NotBlank(message = "Entrez votre Prenoms Nom!")
 	private String lastName;
 	
 	@Column(name="email_id")
-	@NotBlank(message = "Please enter email address!") 
+	@NotBlank(message = "Entrez votre Email!") 
 	private String emailId;
 	
 	@Column(name="contact_number")
-	@NotBlank(message = "Please enter contact number!")
+	@NotBlank(message = "Entrez votre Numero de telephone")
 	private String contactNumber;
 	private String role;
 	
-	@NotBlank(message = "Please enter password!")
+	@NotBlank(message = "Entrez votre mot de Pass")
 	@Size(min = 6 , max=60)
 	private String password;
 	

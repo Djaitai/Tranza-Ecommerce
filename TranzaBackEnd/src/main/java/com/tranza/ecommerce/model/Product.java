@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
@@ -26,11 +27,12 @@ public class Product {
 	@Column(name="product_id")
 	private int productId;
 	
-	@NotBlank(message = "Please enter the product name")
+	@NotBlank(message = "Entrez le nom du Produit!")
 	private String productName;
 	
-	@NotBlank(message = "Please enter the product description")
-	@Column(name="product_description")
+	@NotBlank(message = "Entrez la description du Produit!")
+	@Lob
+	@Column(name="product_description" , columnDefinition="LONGTEXT")
 	private String productDescription;
 	
 	@Column(name="supplier_id")
@@ -40,7 +42,7 @@ public class Product {
 	private double quantity;
 	
 	@Column(name="unit_price")
-	@Min(value = 1 , message = "Price cannot be less than one(1)!")
+	@Min(value = 1 , message = "Le prix du produit doit etre superieur a 1 FCFA!")
 	private double unitPrice;
 	
 	@Column(name="unit_weight")
@@ -63,7 +65,7 @@ public class Product {
 	@Column(name="prod_code")
 	private String prodCode;
 	
-	@NotBlank(message = "Please enter the product Brand")
+	@NotBlank(message = "Entrez la marque du Produit!")
 	private String brand;
 	
 	@Column(name="category_id")

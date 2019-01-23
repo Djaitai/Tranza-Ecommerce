@@ -57,7 +57,7 @@
 					<div class="panel panel-primary">
 
 						<div class="panel-heading">
-							<h4>Sign Up - Personal</h4>
+							<h4>Enregistrer</h4>
 						</div>
 
 						<div class="panel-body">
@@ -66,20 +66,20 @@
 
 
 								<div class="form-group">
-									<label class="control-label col-md-4">First Name</label>
+									<label class="control-label col-md-4">Nom</label>
 									<div class="col-md-8">
 										 <sf:input type="text" path="firstName" class="form-control"
-											placeholder="First Name" />
+											placeholder="Enterez votre nom" />
 										<sf:errors path="firstName" cssClass="help-block" element="em" />
 									</div>
 								</div>
 
 
 								<div class="form-group">
-									<label class="control-label col-md-4">Last Name</label>
+									<label class="control-label col-md-4">Prenom(s)</label>
 									<div class="col-md-8">
 										<sf:input type="text" path="lastName" class="form-control"
-											placeholder="Last Name" />
+											placeholder="Entrez votre Pronoms" />
 										<sf:errors path="lastName" cssClass="help-block" element="em" />
 									</div>
 								</div>
@@ -94,29 +94,29 @@
 								</div>
 
 								<div class="form-group">
-									<label class="control-label col-md-4">Contact Number</label>
+									<label class="control-label col-md-4">Numero Mobile</label>
 									<div class="col-md-8">
 										<sf:input type="text" path="contactNumber"
-											class="form-control" placeholder="+225 XX XX XX XX" maxlength="13" />
+											class="form-control" placeholder="+225 XX XX XX XX" maxlength="20" />
 										<sf:errors path="contactNumber" cssClass="help-block"
 											element="em" />
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="control-label col-md-4">Password</label>
+									<label class="control-label col-md-4">Mot de Pass</label>
 									<div class="col-md-8">
 										<sf:input type="password" path="password" class="form-control"
-											placeholder="Password" />
+											placeholder="Votre mot de Pass" />
 										<sf:errors path="password" cssClass="help-block" element="em" />
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="control-label col-md-4">Confirm Password</label>
+									<label class="control-label col-md-4">Confirmez votre mot de Pass</label>
 									<div class="col-md-8">
 										<sf:input type="password" path="confirmPassword"
-											class="form-control" placeholder="Re-type password" />
+											class="form-control" placeholder="Rentrez votrez mot de pass" />
 										<sf:errors path="confirmPassword" cssClass="help-block"
 											element="em" />
 									</div>
@@ -125,13 +125,13 @@
 								
 								<!-- radio button using bootstrap of radio-inline  -->
 								<div class="form-group">
-									<label class="control-label col-md-4">Select Role</label>
+									<label class="control-label col-md-4">Choisir Role</label>
 									<div class="col-md-8">
 										<label class="radio-inline">
-										 <sf:radiobutton path="role" value="USER" checked="checked" /> User
+										 <sf:radiobutton path="role" value="USER" checked="checked" /> Utilisateur
 										</label> <label class="radio-inline"> 
 										<sf:radiobutton
-												path="role" value="SUPPLIER" /> Supplier
+												path="role" value="SUPPLIER" /> Fournisseur
 										</label>
 									</div>
 								</div>
@@ -140,7 +140,7 @@
 									<div class="col-md-offset-4 col-md-8">
 										<button type="submit" name="_eventId_billing"
 											class="btn btn-primary">
-											Next - Billing <span
+											Suivant <span
 												class="glyphicon glyphicon-chevron-right"></span>
 										</button>
 									</div>

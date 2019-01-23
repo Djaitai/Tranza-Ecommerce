@@ -48,13 +48,13 @@
 	<div class="row">
 	
 		
-		<div class="col-sm-offset-4 col-sm-4">
+		<div class="col-sm-offset-2 col-sm-12">
 			<div class="text-center">		
-				<h1>Welcome!</h1>
-				<h3>onlineshopping.com</h3>
-				<h6>You can use your email address as username to login!</h6>
+				<h1>Bienvenue!</h1>
+				<h2><strong>http://www.tranza-ecommerce.ci</strong></h2>
+				<h6>Vous pouvez utiliser votre adresse e-mail comme nom d'utilisateur pour vous connecter!</h6>
 				<div>
-					<a href="${contextRoot}/login" class="btn btn-lg btn-success">Login Here</a>
+					<a href="${contextRoot}/login" class="btn btn-lg btn-success">Se Connecter</a>
 				</div>
 			</div>
 		</div>

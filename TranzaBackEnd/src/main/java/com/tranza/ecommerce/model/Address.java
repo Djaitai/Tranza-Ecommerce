@@ -24,25 +24,25 @@ public class Address implements Serializable{
 	@Column(name="address_id")
 	private int addressId;
 	
-	@NotBlank(message = "Please enter address line one!")
+	@NotBlank(message = "Entrez votre address!")
 	@Column(name = "address_line_one")
 	private String addressLineOne;
 	
-	@NotBlank(message = "Please enter address line two!")	
+	@NotBlank(message = "Entrez votre addres")	
 	@Column(name = "address_line_two")
 	private String addressLineTwo;
 	
-	@NotBlank(message = "Please enter City!")	
+	@NotBlank(message = "Entrez votre ville!")	
 	private String city;
 	
-	@NotBlank(message = "Please enter State!")	
+	@NotBlank(message = "Entrez votre District ou Etat!")	
 	private String state;
 	
-	@NotBlank(message = "Please enter country!")	
+	@NotBlank(message = "Entrez votre Pays!")	
 	private String country;
 	
 	@Column(name ="postal_code")
-	@NotBlank(message = "Please enter Postal Code!")	
+	@NotBlank(message = "Entrez le Code Postal du pay!")	
 	private String postalCode;
 	
 	@Column(name="is_shipping")

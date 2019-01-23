@@ -112,7 +112,7 @@ html {
 
 					<div class="panel-heading">
 
-						<h4>Product Management</h4>
+						<h4>Gestion des produits</h4>
 
 					</div>
 
@@ -131,8 +131,7 @@ html {
 							</div> --%>
 
 							<div class="form-group">
-								<label class="control-label col-md-4" for="productName">Product
-									Name</label>
+								<label class="control-label col-md-4" for="productName">Nom du Produit</label>
 								<div class="col-md-8">
 									<sf:input type="text" path="productName" class="form-control"
 										id="productName" placeholder="Product Name" />
@@ -142,8 +141,7 @@ html {
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-md-4" for="brand">Brand
-									Name</label>
+								<label class="control-label col-md-4" for="brand">Nom de la marque</label>
 								<div class="col-md-8">
 									<sf:input type="text" path="brand" class="form-control"
 										id="brand" placeholder="Brand Name" />
@@ -152,8 +150,7 @@ html {
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-md-4" for="productDescription">Product
-									description</label>
+								<label class="control-label col-md-4" for="productDescription">Description du produit</label>
 								<div class="col-md-8">
 									<sf:textarea path="productDescription" rows="4"
 										class="form-control" id="productDescription" />
@@ -164,7 +161,7 @@ html {
 
 
 							<div class="form-group">
-								<label class="control-label col-md-4" for="unitPrice">Price</label>
+								<label class="control-label col-md-4" for="unitPrice">Prix</label>
 								<div class="col-md-8">
 									<sf:input type="number" path="unitPrice" class="form-control"
 										id="unitPrice" placeholder="Price" />
@@ -173,7 +170,7 @@ html {
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-md-4" for="quantity">Quantity</label>
+								<label class="control-label col-md-4" for="quantity">Quantite</label>
 								<div class="col-md-8">
 									<sf:input type="number" path="quantity" class="form-control"
 										id="quantity" placeholder="Quantity" />
@@ -182,8 +179,7 @@ html {
 
 							<!-- File element for image upload -->
 							<div class="form-group">
-								<label class="control-label col-md-4" for="file">Select
-									an Image</label>
+								<label class="control-label col-md-4" for="file">Choisir image</label>
 								<div class="col-md-8">
 									<sf:input type="file" path="file" class="form-control"
 										id="file" />
@@ -192,8 +188,7 @@ html {
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-md-4" for="categoryId">Select
-									Category</label>
+								<label class="control-label col-md-4" for="categoryId">Choisir Category</label>
 								<div class="col-md-8">
 									<sf:select class="form-control" id="categoryId"
 										path="categoryId" items="${categories }" itemLabel="catName"
@@ -204,7 +199,7 @@ html {
 											<br>
 											<button type="button" data-toggle="modal"
 												data-target="#myCategoryModal"
-												class="btn btn-warning btn-xs">Add New Category</button>
+												class="btn btn-warning btn-xs">Ajouter Category</button>
 										</div>
 									</c:if>
 								</div>
@@ -212,7 +207,7 @@ html {
 
 							<div class=" form-group">
 								<div class="col-md-offset-4 col-md-8">
-									<input type="submit" name="submit" id="submit" value="Submit"
+									<input type="submit" name="submit" id="submit" value="Ajouter"
 										class="btn btn-primary" />
 								</div>
 							</div>
@@ -246,14 +241,17 @@ html {
 		<div class="row">
 
 			<div class="col-xs-12">
-				<h3>Available Products</h3>
+				<h3>Produits Disponible</h3>
 				<hr style="background-color: #B83227; height: 5px;" />
 			</div>
 
 
 			<div class="col-xs-12">
-
-				<div style="overflow: auto;">
+			
+			<div class="container-fluid">
+			
+				<div class="table-responsive">
+					
 					<!-- Product table for Admin -->
 					<table id="adminProductTable"
 						class="table table-striped table-bordered">
@@ -262,12 +260,12 @@ html {
 							<tr>
 								<th>Product Id</th>
 								<th>&#160;</th>
-								<th>Name</th>
-								<th>Brand</th>
-								<th>Qty. Avail</th>
-								<th>Unit Price</th>
-								<th>Activate</th>
-								<th>Edit</th>
+								<th>Nom</th>
+								<th>Marque</th>
+								<th>Qty. Dispo</th>
+								<th>Prix Unitaire</th>
+								<th>Activer</th>
+								<th>Editer</th>
 							</tr>
 						</thead>
 
@@ -276,47 +274,27 @@ html {
 							<tr>
 								<th>Product Id</th>
 								<th>&#160;</th>
-								<th>Name</th>
-								<th>Brand</th>
-								<th>Qty. Avail</th>
-								<th>Unit Price</th>
-								<th>Activate</th>
-								<th>Edit</th>
+								<th>Nom</th>
+								<th>Marque</th>
+								<th>Qty. Dispo</th>
+								<th>Prix Unitaire</th>
+								<th>Activer</th>
+								<th>Editer</th>
 							</tr>
 						</tfoot>
 
 
 					</table>
+				
 				</div>
+			
+			</div>
+
+					
 
 			</div>
 
 		</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 		<!-- Modal -->
 		<div class="modal fade" id="myCategoryModal" tabindex="-1"
@@ -346,28 +324,27 @@ html {
 
 
 							<div class="form-group">
-								<label class="control-label col-md-4" for="catName">Category
-									Name</label>
+								<label class="control-label col-md-4" for="catName">Nom de la Categorie</label>
 								<div class="col-md-8 validate">
 									<sf:input type="text" path="catName" id="catName"
-										class="form-control" placeholder="Category Name" />
+										class="form-control" placeholder="Nom de la Categorie" />
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-md-4" for="catDescription">Category
-									Description</label>
+								<label class="control-label col-md-4" for="catDescription">Description de la Categorie
+									</label>
 								<div class="col-md-8 validate">
 									<sf:textarea path="catDescription" id="catDescription" cols=""
 										rows="5" class="form-control"
-										placeholder="Enter category description here!" />
+										placeholder="Description de la Categorie ici!" />
 								</div>
 							</div>
 
 
 							<div class="form-group">
 								<div class="col-md-offset-4 col-md-4">
-									<input type="submit" name="submit" value="Add Category"
+									<input type="submit" name="submit" value="Ajouter Categorie"
 										class="btn btn-warning" />
 								</div>
 							</div>
@@ -376,16 +353,6 @@ html {
 				</div>
 			</div>
 		</div>
-
-
-
-
-
-
-
-
-
-
 
 
 	</div>

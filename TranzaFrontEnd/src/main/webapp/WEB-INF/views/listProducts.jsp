@@ -108,7 +108,7 @@
 
 								<li class="breadcrumb-item active"><a
 									href="${contextRoot }/home">Home / </a></li>
-								<li class="active">All Products</li>
+								<li class="active">Tout nos Produits</li>
 							</ol>
 
 						</c:if>
@@ -134,18 +134,21 @@
 
 				<div class="row">
 					<div class="col-xs-12">
-						<table id="productListTable"
-							class="table table-striped table-bordred">
+					
+					<div class="container-fluid">
+					
+						<div class="table-responsive">
+							<table id="productListTable" class="table table-striped table-bordred">
 
 							<thead>
 								<tr>
 									<th>Image</th>
-									<th>Product name</th>
-									<th>Brand</th>
-									<th>Price</th>
-									<th>Quantity</th>
+									<th>Nom du produits</th>
+									<th>Marque</th>
+									<th>Prix</th>
+									<th>Quantite</th>
 									<!-- <th>Code</th> -->
-									<th>Views</th>
+									<th>Voir</th>
 									<th></th>
 
 								</tr>
@@ -154,23 +157,30 @@
 							<tfoot>
 								<tr>
 									<th>Image</th>
-									<th>Product name</th>
-									<th>Brand</th>
-									<th>Price</th>
-									<th>Quantity available</th>
+									<th>Nom du produits</th>
+									<th>Marque</th>
+									<th>Prix</th>
+									<th>Quantite</th>
 									<!-- <th>Code</th> -->
-									<th>Views</th>
+									<th>Voir</th>
 									<th></th>
 								</tr>
 							</tfoot>
 
 						</table>
+						</div>
+					
+					</div>
+					
+						
 					</div>
 				</div>
 
 			</div>
 
 		</div>
+		
+		
 
 	</div>
 
@@ -184,6 +194,6 @@
 
 
 
-
+<%-- <%@ include file="./header/footer.jsp" %> --%>
 </body>
 </html>

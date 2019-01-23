@@ -62,7 +62,7 @@ public class HomeController {
 	{
 		//ModelAndView modelAndView = new ModelAndView("home");
 		ModelAndView modelAndView = new ModelAndView("listProducts");
-		modelAndView.addObject("title", "All products");
+		modelAndView.addObject("title", "Tout nos Produits");
 		modelAndView.addObject("categories", categoryDAO.getAllCategory());
 		modelAndView.addObject("userClickAllProducts", true);
 		return modelAndView;
@@ -153,15 +153,15 @@ public class HomeController {
 		
 		if(error!=null)
 		{
-			modelAndView.addObject("message" , "Ivalid username and password");
+			modelAndView.addObject("message" , "Nom d'utilisateur et mot de passe invalides");
 		}
 		
 		if(logout!=null)
 		{
-			modelAndView.addObject("logout" , "User has successfully logged out ");
+			modelAndView.addObject("logout" , "L'utilisateur s'est déconnecté avec succès ");
 		}
 		
-		modelAndView.addObject("title", "Login");
+		modelAndView.addObject("title", "Connecte");
 		return modelAndView;
 	}
 	
@@ -188,9 +188,9 @@ public class HomeController {
 	public ModelAndView accessDenied()
 	{
 		ModelAndView modelAndView = new ModelAndView("error");
-		modelAndView.addObject("title", "403 - Access Denied");
-		modelAndView.addObject("errorTitle", "Aha! - Caught you");
-		modelAndView.addObject("errorDescription", "Your are not authorized to viewthis page");
+		modelAndView.addObject("title", "403 - Accès refusé");
+		modelAndView.addObject("errorTitle", "Aha! - Je t'ai eu");
+		modelAndView.addObject("errorDescription", "Vous n'êtes pas autorisé à afficher cette page");
 		return modelAndView;
 	}
 	

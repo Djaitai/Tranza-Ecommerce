@@ -20,7 +20,7 @@ public class ProductValidator implements Validator {
 		//Check whetehre file as been selected
 		
 		if(product.getFile()==null || product.getFile().getOriginalFilename().equals("")) {
-			errors.rejectValue("file",null , "Please select an image file toupload");
+			errors.rejectValue("file",null , "Veuillez sélectionner un fichier image à télécharger!");
 			return;
 		}
 
@@ -29,7 +29,7 @@ public class ProductValidator implements Validator {
 			 product.getFile().getContentType().equals("image/png")||
 			 product.getFile().getContentType().equals("image/gif"))
 				){
-			errors.rejectValue("file",null, "Please use only image file to upload!");
+			errors.rejectValue("file",null, "S'il vous plaît utiliser uniquement le fichier image à télécharge!");
 			return;
 		}
 		

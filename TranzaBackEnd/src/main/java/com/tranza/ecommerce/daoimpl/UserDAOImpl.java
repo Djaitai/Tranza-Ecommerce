@@ -118,15 +118,5 @@ public class UserDAOImpl implements UserDAO {
 							.getResultList();
 	}
 
-	@Override
-	public boolean addCart(Cart cart) {
-		try {			
-			sessionFactory.getCurrentSession().persist(cart);			
-			return true;
-		}
-		catch(Exception ex) {
-			return false;
-		}
-	}
 
 }

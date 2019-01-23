@@ -43,7 +43,7 @@ public class AdminController {
 		
 		ModelAndView modelAndView = new ModelAndView("manageProduct");
 		modelAndView.addObject("userClickManageProducts", true);
-		modelAndView.addObject("title" , "Manage Products");
+		modelAndView.addObject("title" , "Gérer les produits");
 		
 		Product nProduct = new Product();
 		//set few of the fields
@@ -54,11 +54,11 @@ public class AdminController {
 		if(operation!=null){
 			
 			if(operation.equals("product")) {
-				modelAndView.addObject("message" , "Product submitted successfully");
+				modelAndView.addObject("message" , "Produit Enregistre avec Succès");
 			}
 			
 			else if (operation.equals("category")) {
-				modelAndView.addObject("message" , "Category submitted successfully");
+				modelAndView.addObject("message" , "Categorie Enregistre avec Succès");
 			}
 		}
 		
@@ -103,7 +103,7 @@ public ModelAndView shoWEditProducts(@PathVariable int productId) {
 		if(results.hasErrors()) {
 			model.addAttribute("userClickManageProducts", true);
 			model.addAttribute("title" , "Manage Products");
-			model.addAttribute("message" , "Validation failed for product subimission");
+			model.addAttribute("message" , "Échec de la validation pour la soumission du produit");
 			//return "home";
 			return "manageProduct";
 			 //Or manageProduct if message does not display
@@ -134,8 +134,8 @@ public ModelAndView shoWEditProducts(@PathVariable int productId) {
 		product.setiSactive(!product.getiSactive());
 		productDAO.updateProduct(product);
 		
-		return (isActive)? "You are succssfully deactivate the product with ID " + product.getProductId() : 
-			"You are succssfully deactivate the product with ID " + product.getProductId();
+		return (isActive)? "Vous avez réussi à désactiver le produit avec ID " + product.getProductId() : 
+			"Vous avez réussi à désactiver le produit avec ID " + product.getProductId();
 	}
 	
 	

@@ -19,13 +19,13 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Online Shopping - ${title}</title>
+<title>Home - ${title}</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
 
 <!-- Bootstrap Readable Theme -->
-<link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
+<%-- <link href="${css}/bootstrap-readable-theme.css" rel="stylesheet"> --%>
 
 
 <!-- Custom CSS -->
@@ -69,7 +69,7 @@
 	        <div class="container">
 	            <!-- Brand and toggle get grouped for better mobile display -->
 	            <div class="navbar-header">
-	                <a class="navbar-brand" href="${contextRoot}/home">Online Shopping</a>
+	                <a class="navbar-brand" href="${contextRoot}/home">Tranza</a>
 	            </div>
 			</div>
 		</nav>		
@@ -114,13 +114,13 @@
          <div class="form-group">
           <label for="username" class="col-md-4 control-label">Email: </label>
           <div class="col-md-8">
-           <input type="text" name="username" id="username" class="form-control"/>
+           <input type="text" name="username" id="username" class="form-control" placeholder="Entrez votre email" />
           </div>
          </div>
          <div class="form-group">
-          <label for="password" class="col-md-4 control-label">Password: </label>
+          <label for="password" class="col-md-4 control-label">Mot de pass: </label>
           <div class="col-md-8">
-           <input type="password" name="password" id="password" class="form-control"/>
+           <input type="password" name="password" id="password" class="form-control" placeholder="Entrez votre mot de pass" />
           </div>
          </div>
          <div class="form-group">
@@ -134,7 +134,7 @@
        </div>
        <div class="panel-footer">
        	<div class="text-right">
-       		New User - <a href="${contextRoot}/register">Register Here</a>
+       		Nouveau utilisateur - <a href="${contextRoot}/register">S'enregistrer</a>
        	</div>
        </div>
       

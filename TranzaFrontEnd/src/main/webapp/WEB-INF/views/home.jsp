@@ -119,6 +119,12 @@
 				<%@include file="manageProduct.jsp"%>
 			</c:if>
 
+			
+			<!-- Loading only when user click cart -->
+			<c:if test="${userClickShowCart == true }">
+				<%@include file="cart.jsp"%>
+			</c:if>
+			
 
 
 
@@ -214,11 +220,10 @@
 										src="resources/images/banner08.jpg" alt="First slide"></a>
 									<div class="card-body">
 										<h4 class="card-title">
-											<a href="#">T-Shirt</a>
+											<a href="#">Montre</a>
 										</h4>
-										<h5>$24.99</h5>
-										<p class="card-text">Lorem ipsum dolor sit amet,
-											consectetur adipisicing elit. Amet numquam aspernatur!</p>
+										<h5><strong>2400.99 FCFA</strong></h5>
+										<p class="card-text">Description du produits ici!</p>
 									</div>
 									<div class="card-footer">
 										<small class="text-muted">&#9733; &#9733; &#9733;
@@ -234,12 +239,10 @@
 										src="resources/images/product06.jpg" alt="First slide"></a>
 									<div class="card-body">
 										<h4 class="card-title">
-											<a href="#">Shirt</a>
+											<a href="#">Sac a main</a>
 										</h4>
-										<h5>$24.99</h5>
-										<p class="card-text">Lorem ipsum dolor sit amet,
-											consectetur adipisicing elit. Amet numquam aspernatur! Lorem
-											ipsum dolor sit amet.</p>
+										<h5><strong>2400.99 FCFA</strong></h5>
+										<p class="card-text">Description du produits ici!</p>
 									</div>
 									<div class="card-footer">
 										<small class="text-muted">&#9733; &#9733; &#9733;
@@ -255,11 +258,10 @@
 										src="resources/images/product07.jpg" alt="First slide"></a>
 									<div class="card-body">
 										<h4 class="card-title">
-											<a href="#">Blazer</a>
+											<a href="#">sac a main</a>
 										</h4>
-										<h5>$24.99</h5>
-										<p class="card-text">Lorem ipsum dolor sit amet,
-											consectetur adipisicing elit. Amet numquam aspernatur!</p>
+										<h5><strong>2400.99 FCFA</strong></h5>
+										<p class="card-text">Description du produits ici!</p>
 									</div>
 									<div class="card-footer">
 										<small class="text-muted">&#9733; &#9733; &#9733;
@@ -275,11 +277,10 @@
 										src="resources/images/iPad.jpg" alt="First slide"></a>
 									<div class="card-body">
 										<h4 class="card-title">
-											<a href="#">Item Four</a>
+											<a href="#">iPad</a>
 										</h4>
-										<h5>$24.99</h5>
-										<p class="card-text">Lorem ipsum dolor sit amet,
-											consectetur adipisicing elit. Amet numquam aspernatur!</p>
+										<h5><strong>2400.99 FCFA</strong></h5>
+										<p class="card-text">Description du produits ici!</p>
 									</div>
 									<div class="card-footer">
 										<small class="text-muted">&#9733; &#9733; &#9733;
@@ -295,12 +296,10 @@
 										src="resources/images/tablet.jpg" alt="First slide"></a>
 									<div class="card-body">
 										<h4 class="card-title">
-											<a href="#">Item Five</a>
+											<a href="#">Tablette</a>
 										</h4>
-										<h5>$24.99</h5>
-										<p class="card-text">Lorem ipsum dolor sit amet,
-											consectetur adipisicing elit. Amet numquam aspernatur! Lorem
-											ipsum dolor sit amet.</p>
+										<h5><strong>2400.99 FCFA</strong></h5>
+										<p class="card-text">Description du produits ici!</p>
 									</div>
 									<div class="card-footer">
 										<small class="text-muted">&#9733; &#9733; &#9733;
@@ -316,11 +315,10 @@
 										src="resources/images/banner08.jpg" alt="First slide"></a>
 									<div class="card-body">
 										<h4 class="card-title">
-											<a href="#">Item Six</a>
+											<a href="#">Montre</a>
 										</h4>
-										<h5>$24.99</h5>
-										<p class="card-text">Lorem ipsum dolor sit amet,
-											consectetur adipisicing elit. Amet numquam aspernatur!</p>
+										<h5><strong>2400.99 FCFA</strong></h5>
+										<p class="card-text">Description du produits ici!</p>
 									</div>
 									<div class="card-footer">
 										<small class="text-muted">&#9733; &#9733; &#9733;

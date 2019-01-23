@@ -43,7 +43,7 @@ public class RegisterHandler {
 		   if(!user.getPassword().equals(user.getConfirmPassword())) {
 		    error.addMessage(new MessageBuilder()
 		    		.error()
-		    		.source("confirmPassword").defaultText("Password does not match confirm password!")
+		    		.source("confirmPassword").defaultText("Le mot de passe ne correspond pas à confirmer le mot de passe!")
 		    		.build());
 		    transitionValue = "failure";    
 		   } 
@@ -51,7 +51,7 @@ public class RegisterHandler {
 		   // Check the uniqueness of emailId
 		   if(userDAO.getUserByEmail(user.getEmailId())!=null) {
 		    error.addMessage(new MessageBuilder().error().source(
-		      "emailId").defaultText("Email address is already used!").build());
+		      "emailId").defaultText("L'adresse email est déjà utilisée!").build());
 		    transitionValue = "failure";
 		   }
 		  return transitionValue;

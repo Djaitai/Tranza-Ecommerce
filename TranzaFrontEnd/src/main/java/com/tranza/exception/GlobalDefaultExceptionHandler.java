@@ -14,9 +14,9 @@ public class GlobalDefaultExceptionHandler {
 	public ModelAndView handlerNoHandlerFoundException()
 	{
 		ModelAndView modelAndView = new ModelAndView("error");
-		modelAndView.addObject("errorTitle", "The page is not constructed");
-		modelAndView.addObject("errorDescription" , "The page are looking is not available now");
-		modelAndView.addObject("title", "404 eror page");	
+		modelAndView.addObject("errorTitle", "La page n'est pas construite");
+		modelAndView.addObject("errorDescription" , "La page sont à la recherche n'est pas disponible maintenant");
+		modelAndView.addObject("title", "Page d'erreur 404");	
 		return modelAndView;
 	}
 	
@@ -25,9 +25,9 @@ public class GlobalDefaultExceptionHandler {
 	public ModelAndView handlerProductNotFoundExceptionException()
 	{
 		ModelAndView modelAndView = new ModelAndView("error");
-		modelAndView.addObject("errorTitle", "The product not available!!!!");
-		modelAndView.addObject("errorDescription" , "The product that you are looking is not available now!!!");
-		modelAndView.addObject("title", "Product unavailable!!!");	
+		modelAndView.addObject("errorTitle", "Le produit n'est pas disponible !!!!");
+		modelAndView.addObject("errorDescription" , "Le produit que vous cherchez n'est pas disponible maintenant !!!");
+		modelAndView.addObject("title", "Produit non disponible !!!");	
 		return modelAndView;
 	}
 	
@@ -36,7 +36,7 @@ public class GlobalDefaultExceptionHandler {
 	public ModelAndView handlerException( Exception ex)
 	{
 		ModelAndView modelAndView = new ModelAndView("error");
-		modelAndView.addObject("errorTitle", "Contact your Administrator!!!!");
+		modelAndView.addObject("errorTitle", "Contactez votre administrateur !!!!");
 		
 		/**
 		 * Only for debugging your app
@@ -47,7 +47,7 @@ public class GlobalDefaultExceptionHandler {
 		modelAndView.addObject("errorDescription" , sw.toString());
 		//modelAndView.addObject("errorDescription" , ex.toString());
 		
-		modelAndView.addObject("title", "Error!!!");	
+		modelAndView.addObject("title", "Erreur!!!");	
 		return modelAndView;
 	}
 }

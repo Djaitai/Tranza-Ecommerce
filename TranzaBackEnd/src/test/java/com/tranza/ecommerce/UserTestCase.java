@@ -1,6 +1,9 @@
 package com.tranza.ecommerce;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.BeforeClass;
+import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.tranza.ecommerce.dao.UserDAO;
@@ -19,7 +22,7 @@ public class UserTestCase {
 	@BeforeClass
 	public static void init() {
 		context = new AnnotationConfigApplicationContext();
-		context.scan("net.kzn.shoppingbackend");
+		context.scan("com.tranza");
 		context.refresh();
 		
 		userDAO = (UserDAO) context.getBean("userDAO");
@@ -96,14 +99,14 @@ public class UserTestCase {
 		// add the address
 		assertEquals("Failed to add the address!", true, userDAO.addAddress(address));	
 	}
-	
-	@Test
+	*/
+	/*@Test
 	public void testUpdateCart() {
-		user = userDAO.get(1);
+		user = userDAO.getUserById(1);
 		cart = user.getCart();
-		cart.setGrandTotal(10000);
+		cart.setGrandTotal(10000.0);
 		cart.setCartLines(1);
 		assertEquals("Failed to update the cart!", true, userDAO.updateCart(cart));			
-	} 
-*/
+	} */
+
 }
