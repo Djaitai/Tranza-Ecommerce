@@ -1,4 +1,4 @@
-/*package com.tranza.ecommerce;
+package com.tranza.ecommerce;
 
 import static org.junit.Assert.assertEquals;
 
@@ -49,9 +49,10 @@ public class OrdersTest {
 	public void addOrdersTest()
 	{
 		
-		user = userDAO.getUserById(5);
+		user = userDAO.getUserById(1); // fetch the user id
 		Orders orders = new Orders();
-		orders.setOrderNumber(user.getContactNumber());
+		orders.setUser(userDAO.getUserById(1)); //get the user id in userId on order table field
+		orders.setOrderNumber(user.getEmailId());//get the user emnail id.... Later change it into user code
 		orders.setItemsCount(2);
 		orders.setItemsQuantity(3);
 		orders.setUpdateOrderDate(new Date());
@@ -60,4 +61,3 @@ public class OrdersTest {
 	}
 	
 }
-*/
