@@ -55,8 +55,10 @@ public class CartService {
 			Product product = cartLine.getProduct();
 			double oldTotal = cartLine.getTotal();
 			
-			if(product.getQuantity() <= count) {
+			//Checking if the product Quantity is available
+			if(product.getQuantity() < count) {
 				count = (int) product.getQuantity();
+				return "result=unavailable";
 			}
 			
 			cartLine.setProductCount(count);
@@ -69,6 +71,76 @@ public class CartService {
 			return "result=updated";
 		}
 	}
+
+	
+	
+	
+	public String deleteCartLine(int cartLineId) {
+		
+		// Fetch the cartLine
+		CartLine cartLine = cartLineDAO.getCartLineById(cartLineId);
+		// deduct the cart
+		// update the cart
+		if(cartLine == null) {
+			return "result=error";
+		}
+		else {
+			//UPDATE THE CART
+			Cart cart = this.getCart();	
+			cart.setGrandTotal(cart.getGrandTotal() - cartLine.getTotal());
+			cart.setCartLines(cart.getCartLines() - 1);		
+			cartLineDAO.updateCart(cart);
+			
+			// remove the cartLine
+			cartLineDAO.removeCartLine(cartLine);
+					
+			return "result=deleted";
+		}
+		
+	}
+
+	public String addCartLine(int productId) {	
+		//Get the cart from the session
+		Cart cart = this.getCart();
+		String response = null;
+		CartLine cartLine = cartLineDAO.getByCartAndProduct(cart.getCartId(), productId);
+		if(cartLine==null) {
+			// add a new cartLine if a new product is getting added
+			cartLine = new CartLine();
+			Product product = productDAO.getProductById(productId);
+			
+			// transfer the product details to cartLine
+			cartLine.setCartId(cart.getCartId());
+			cartLine.setProduct(product);
+			cartLine.setProductCount(1);
+			cartLine.setBuyingPrice(product.getUnitPrice());
+			cartLine.setTotal(product.getUnitPrice());
+			cartLine.setAvailable(true);
+			
+			// insert a new cartLine
+			cartLineDAO.addCartLine(cartLine);
+			
+			// update the cart
+			cart.setGrandTotal(cart.getGrandTotal() + cartLine.getTotal());
+			cart.setCartLines(cart.getCartLines() + 1);
+			cartLineDAO.updateCart(cart);
+
+			response = "result=added";						
+		} 
+		else {
+			// check if the cartLine has been already reached to maximum count
+			if(cartLine.getProductCount() < 3) {
+				//Update the product count for that particular cartLine
+				// call the manageCartLine method to increase the count
+				response = this.manageCartLine(cartLine.getCartLineId(), cartLine.getProductCount() + 1);				
+			}			
+			else {				
+				response = "result=maximum";				
+			}						
+		}
+		
+		return response;
+}
 	
 	
 

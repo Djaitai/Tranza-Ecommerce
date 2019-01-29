@@ -6,8 +6,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<spring:url var="css" value="/resources/css" />
-<spring:url var="js" value="/resources/js" />
+ <spring:url var="css" value="/resources/css" />
+<spring:url var="js" value="/resources/js" /> 
 <%-- <spring:url var="images" value="/resources/images" /> --%>
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
@@ -20,7 +20,7 @@
 <meta name="_csrf" content="${_csrf.token }">
 <meta name="_csrf_header" content="${_csrf.headerName }">
 
-<link rel="stylesheet"
+ <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
 	crossorigin="anonymous">
@@ -34,7 +34,6 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
 	integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
 	crossorigin="anonymous"></script>
->
 
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
@@ -43,7 +42,7 @@
 
 
 <!-- Newly added and then work check it back and compare it to otheras links -->
-<link rel="stylesheet"
+ <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -85,6 +84,7 @@ html {
 <body>
 
 	<%@ include file="./header/menu.jsp"%>
+	<%-- <%@ include file="./header/header.jsp"%> --%>
 
 	<div class="container">
 
@@ -187,6 +187,7 @@ html {
 								</div>
 							</div>
 
+
 							<div class="form-group">
 								<label class="control-label col-md-4" for="categoryId">Choisir Category</label>
 								<div class="col-md-8">
@@ -204,6 +205,8 @@ html {
 									</c:if>
 								</div>
 							</div>
+							
+							
 
 							<div class=" form-group">
 								<div class="col-md-offset-4 col-md-8">
@@ -306,23 +309,13 @@ html {
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="myModalLabel">Add New Category</h4>
+						<h4 class="modal-title" id="myModalLabel">Ajoutez une nouvelle categorie</h4>
 					</div>
 					<div class="modal-body">
 						<!--  Category form -->
 						<sf:form id="categoryForm" class="form-horizontal"
 							modelAttribute="category" action="${contextRoot}/manage/category"
-							method="POST">
-
-							<%-- <div class="form-group">
-								<label class="control-label col-md-4" for="catName">Category ID</label>
-								<div class="col-md-8 validate">
-									<sf:input type="text" path="categoryId" id="catName" class="form-control"
-										placeholder="Category Name" />
-								</div>
-							</div> --%>
-
-
+							method="POST" enctype="multipart/form-data">
 							<div class="form-group">
 								<label class="control-label col-md-4" for="catName">Nom de la Categorie</label>
 								<div class="col-md-8 validate">
@@ -338,6 +331,16 @@ html {
 									<sf:textarea path="catDescription" id="catDescription" cols=""
 										rows="5" class="form-control"
 										placeholder="Description de la Categorie ici!" />
+								</div>
+							</div>
+							
+							<!-- File element for image upload -->
+							<div class="form-group">
+								<label class="control-label col-md-4" for="file">Choisir image</label>
+								<div class="col-md-8">
+									<sf:input type="file" path="file" class="form-control"
+										id="file" />
+									<sf:errors path="file" cssClass="help-block" element="em" />
 								</div>
 							</div>
 
@@ -358,7 +361,8 @@ html {
 	</div>
 
 	<!-- Jquery validator -->
-	<script src="${js}/jquery.validate.js"></script>
+	<%-- <script src="${js}/jquery.validate.js"></script> --%>
+	<script src="<c:url value="/resources/js/jquery.validate.js" />"></script>
 
 	<!-- DataTable plugin -->
 	<script src="<c:url value="/resources/js/jquery.dataTables.js" />"></script>
@@ -369,8 +373,8 @@ html {
 	<script src="<c:url value="/resources/js/dataTables.bootstrap4.js" />"></script>
 
 	<!-- BootBox -->
-	<script src="${js}/bootbox.min.js"></script>
-
+	<%-- <script src="${js}/bootbox.min.js"></script> --%>
+	<script src="<c:url value="/resources/js/bootbox.min.js" />"></script>
 	<!-- Self coded js file -->
 	<%-- <script src="<c:url value="/resources/js/mainApp.js" />"></script> --%>
 

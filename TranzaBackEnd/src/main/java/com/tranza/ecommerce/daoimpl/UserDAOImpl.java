@@ -2,6 +2,7 @@ package com.tranza.ecommerce.daoimpl;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -10,14 +11,18 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tranza.ecommerce.dao.UserDAO;
 import com.tranza.ecommerce.model.Address;
 import com.tranza.ecommerce.model.Cart;
+import com.tranza.ecommerce.model.Product;
 import com.tranza.ecommerce.model.User;
 
-@Repository("userDAO")
+@Repository(value="userDAO")
 @Transactional
 public class UserDAOImpl implements UserDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	@Autowired
+	private User user;
 	
 	@Override
 	public User getUserByEmail(String emailId) {
@@ -36,14 +41,25 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User getUserById(int userId) {
-		try {			
-			return sessionFactory.getCurrentSession().get(User.class, userId);			
-		}
-		catch(Exception ex) {
-			System.out.println(ex.getMessage());
+		try {
+			user = sessionFactory.getCurrentSession().get(User.class, userId);
+			return user;
+		} catch (HibernateException e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
+	
+/*	@Override
+	public User getUserByContactNumber(String contactNumber) {
+		try {
+			user = sessionFactory.getCurrentSession().get(User.class, contactNumber);
+			return user;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}*/
 
 	@Override
 	public boolean addUser(User user) {

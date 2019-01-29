@@ -81,6 +81,8 @@ public class ProductDOAOImpl implements ProductDAO {
 							.setMaxResults(count)
 								.getResultList();
 	}
+	
+	
 
 	//Method to fetch product based on the id
 	@Override

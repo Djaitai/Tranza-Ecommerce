@@ -29,5 +29,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="F:/Upsilon-solution/H2/h2/bin/h2-1.4.196.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -339,6 +339,10 @@ $(function() {
 				catDescription: {
 					required: true
 					
+				},
+				
+				categoryCode : {
+					required: true,				
 				}
 			},
 			
@@ -350,6 +354,10 @@ $(function() {
 				
 				catDescription: {
 					required: 'Veuillez ajouter une description pour cette catégorie!'
+				},
+				
+				categoryCode : {
+					required: 'Veuillez entrez l\'image de la category!'
 				}
 			}
 			,

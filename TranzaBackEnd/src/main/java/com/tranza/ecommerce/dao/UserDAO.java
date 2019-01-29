@@ -12,6 +12,8 @@ public interface UserDAO {
 	User getUserByEmail(String emailId);
 
 	User getUserById(int userId);
+	
+	/*User getUserByContactNumber(String ContactNumber);*/
 
 	boolean addUser(User user);
 

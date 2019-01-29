@@ -50,6 +50,7 @@ public class HomeController {
 		modelAndView.addObject("userClickHome", true);
 		//Passing the list of categories
 		modelAndView.addObject("categories", categoryDAO.getAllCategory());
+		modelAndView.addObject("products", productDAO.getAllProduct());
 		return modelAndView;
 	}
 	
@@ -68,11 +69,13 @@ public class HomeController {
 		return modelAndView;
 	}
 	
+	
+	
 	@RequestMapping(value = "show/category/{categoryId}/products")
 	public ModelAndView showCategoryProducts(@PathVariable("categoryId") int categoryId)
 	{
 		//ModelAndView modelAndView = new ModelAndView("home");
-		ModelAndView modelAndView = new ModelAndView("listProducts");
+		ModelAndView modelAndView = new ModelAndView("singleProduct");
 		
 		//CategoryDAO to fetch a single category
 		category = categoryDAO.getCategoryById(categoryId);
@@ -80,7 +83,7 @@ public class HomeController {
 		
 		//passing the list of  categories
 		modelAndView.addObject("categories", categoryDAO.getAllCategory());
-		
+		modelAndView.addObject("product", productDAO.listActiveProductByCategory(categoryId));
 		//passing the single category object 
 		modelAndView.addObject("category", category);
 		

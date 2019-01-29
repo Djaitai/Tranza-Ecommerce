@@ -14,7 +14,6 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.tranza.ecommerce.model.Category;
 
 @Configuration
 @EnableTransactionManagement
@@ -133,7 +132,6 @@ public class HibernateConfig {
 		sessionBuilder.scanPackages("com.tranza");
 		//sessionBuilder.addAnnotatedClass(Category.class);
 		//sessionBuilder.addAnnotatedClass(Product.class);
-		//sessionBuilder.addAnnotatedClass(Category.class);
 		return sessionBuilder.buildSessionFactory();
 	}
 
@@ -143,7 +141,7 @@ public class HibernateConfig {
 		return new CategoryDao(sessionFactory);
 	}
 	*/
-    @Autowired
+    @Autowired 
 	@Bean(name = "transactionManager")
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);

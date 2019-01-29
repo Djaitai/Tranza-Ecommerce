@@ -29,7 +29,7 @@ public class ProductTest {
 		product = (Product) context.getBean("product");
 	}
 
-	@Test
+	/*@Test
 	public void saveProductTestCase() {
 
 		//product.setProd_code("AWCD7RT55SD");
@@ -38,14 +38,14 @@ public class ProductTest {
 		product.setViews(50);
 		Boolean status = productDAO.addProduct(product);
 		assertEquals("Save product", true, status);
+	}*/
+	
+	@Test
+	public void getAllProductTestCase() {
+		int status = productDAO.getLastActiveProduct(1).size();
+		assertEquals("list of  category",1, status);
 	}
 	
-	/*@Test
-	public void getAllProductTestCase() {
-		int status = productDAO.getAllProduct().size();
-		assertEquals("list of  category",4, status);
-	}
-	*/
 	/*@Test
 	public void listtActiveListTestCase() {
 		int status = productDAO.listActiveProductByCategory("Cat000").size();

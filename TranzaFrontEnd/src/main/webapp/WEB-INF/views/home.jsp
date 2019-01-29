@@ -28,13 +28,13 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="${css }/bootstrap.min.css" rel="stylesheet">
+<%-- <link href="${css }/bootstrap.min.css" rel="stylesheet"> --%>
 
 <!-- Custom styles for this template -->
-<link href="${css }/shop-homepage.css" rel="stylesheet">
+<%-- <link href="${css }/shop-homepage.css" rel="stylesheet"> --%>
 
 <!-- Bootstrap theme -->
-<link href="${css }/bootstrap.them.min.css" rel="stylesheet">
+<%-- <link href="${css }/bootstrap.them.min.css" rel="stylesheet"> --%>
 
 
 <script>
@@ -43,36 +43,44 @@
 </script>
 
 
-<link rel="stylesheet"
+  <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
 	crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-	integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-	crossorigin="anonymous"></script>
-<script
+
+    <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
 	integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
 	crossorigin="anonymous"></script>
-
+ 
 
 <!-- Newly added and then work check it back and compare it to other links -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
+ <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+ <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 
-<style>
-	html{
-		font-size: 100%
-	}
+<style> 
+html {
+	font-size: 100%
+}
 
+.card-text {
+	line-height: 18px;
+	margin-top: 10px;
+}
+
+.card-name {
+	z-index: 100;
+	position: absolute;
+	top: -15px;
+	margin-left: -20px;
+	font-weight: bold;
+	background-color: #DFAF2B;
+	font-size: 30px;
+}
 </style>
 
 
@@ -81,7 +89,7 @@
 
 	<div class="wrapper">
 
-		<%@ include file="./header/menu.jsp" %>
+		<%@ include file="./header/menu.jsp"%>
 		<!--  Page content -->
 
 		<div class="content">
@@ -119,12 +127,18 @@
 				<%@include file="manageProduct.jsp"%>
 			</c:if>
 
-			
+
 			<!-- Loading only when user click cart -->
 			<c:if test="${userClickShowCart == true }">
 				<%@include file="cart.jsp"%>
 			</c:if>
-			
+
+
+			<!-- Loading only when user click cart -->
+			<c:if test="${userClickShowSingleProductHomePage == true }">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
+
 
 
 
@@ -210,48 +224,74 @@
 								aria-hidden="true"></span> <span class="sr-only">Next</span>
 							</a>
 						</div>
+						</div>
+						</div><!-- row -->
 
 						<div class="row">
 
-							<div class="col-lg-4 col-md-6 mb-4">
-								<div class="card h-100">
-									<a href="#"><img class="d-block img-fluid"
-										style="width: 400px; height: 145px"
-										src="resources/images/banner08.jpg" alt="First slide"></a>
-									<div class="card-body">
-										<h4 class="card-title">
-											<a href="#">Montre</a>
-										</h4>
-										<h5><strong>2400.99 FCFA</strong></h5>
-										<p class="card-text">Description du produits ici!</p>
-									</div>
-									<div class="card-footer">
-										<small class="text-muted">&#9733; &#9733; &#9733;
-											&#9733; &#9734;</small>
+
+
+<%-- 
+							<c:forEach items="${products }" var="list">
+
+								<div class="col-lg-4 col-md-6 mb-4">
+									<div class="card h-100">
+										<a href="#"><img class="d-block img-fluid"
+											style="width: 400px; height: 145px"
+											src="${contextRoot }/resources/images/${list.prodCode}.jpg"
+											alt="First slide"></a>
+										<div class="card-body">
+											<h4 class="card-title">
+												<a href="#">${list.productName }</a>
+											</h4>
+											<h5>
+												<strong>${list.unitPrice } FCFA-/-</strong>
+											</h5>
+											<p class="card-text">${list.productDescription }</p>
+										</div>
+										<div class="card-footer">
+											<h4 class="card-text" style="color: #E71C23;">Nombre de vue: ${list.views }</h4>
+											<small class="text-muted">&#9733; &#9733; &#9733;
+												&#9733; &#9734;</small>
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<div class="col-lg-4 col-md-6 mb-4">
-								<div class="card h-100">
-									<a href="#"><img class="d-block img-fluid"
-										style="width: 400px; height: 145px"
-										src="resources/images/product06.jpg" alt="First slide"></a>
-									<div class="card-body">
-										<h4 class="card-title">
-											<a href="#">Sac a main</a>
-										</h4>
-										<h5><strong>2400.99 FCFA</strong></h5>
-										<p class="card-text">Description du produits ici!</p>
-									</div>
-									<div class="card-footer">
-										<small class="text-muted">&#9733; &#9733; &#9733;
-											&#9733; &#9734;</small>
+							</c:forEach>
+							
+							 --%></div> <!-- row -->
+
+							<hr style="height: 50px; background-color: #0A79DF; ">
+							<div>Nos Categories</div> <br><br>
+							
+							<div class="row">
+							
+							<c:forEach items="${categories }" var="categoriesList">
+
+								<div class="col-lg-4 col-md-6 mb-4">
+									<div class="card h-100">
+										<a href="${contextRoot }/show/category/${categoriesList.categoryId }/products"
+											id="a_${categoriesList.categoryCode }"><img class="d-block img-fluid"
+											style="width: 400px; height: 145px"
+											src="${contextRoot }/resources/images/${categoriesList.categoryCode }.jpg"
+											alt="First slide"></a>
+										<div class="card-body">
+											<h4 class="card-name">
+												<a style="color: white;" href="${contextRoot }/show/category/${categoriesList.categoryId }/products">${categoriesList.catName }</a>
+											</h4>
+											
+										</div>
+										
 									</div>
 								</div>
-							</div>
 
-							<div class="col-lg-4 col-md-6 mb-4">
+							</c:forEach>
+							
+							</div> <!-- row -->
+							
+
+
+							<!-- <div class="col-lg-4 col-md-6 mb-4">
 								<div class="card h-100">
 									<a href="#"><img class="d-block img-fluid"
 										style="width: 400px; height: 145px"
@@ -269,8 +309,8 @@
 									</div>
 								</div>
 							</div>
-
-							<div class="col-lg-4 col-md-6 mb-4">
+ -->
+							<!-- <div class="col-lg-4 col-md-6 mb-4">
 								<div class="card h-100">
 									<a href="#"><img class="d-block img-fluid"
 										style="width: 400px; height: 145px"
@@ -287,9 +327,9 @@
 											&#9733; &#9734;</small>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
-							<div class="col-lg-4 col-md-6 mb-4">
+							<!-- <div class="col-lg-4 col-md-6 mb-4">
 								<div class="card h-100">
 									<a href="#"><img class="d-block img-fluid"
 										style="width: 400px; height: 145px"
@@ -306,9 +346,9 @@
 											&#9733; &#9734;</small>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
-							<div class="col-lg-4 col-md-6 mb-4">
+							<!-- <div class="col-lg-4 col-md-6 mb-4">
 								<div class="card h-100">
 									<a href="#"><img class="d-block img-fluid"
 										style="width: 400px; height: 145px"
@@ -325,40 +365,40 @@
 											&#9733; &#9734;</small>
 									</div>
 								</div>
-							</div>
+							</div> -->
 
-						</div>
+						<!-- </div> -->
 						<!-- /.row -->
 
-					</div>
+					<!-- </div> -->
 					<!-- /.col-lg-9 -->
 
-				</div>
+				<!-- </div> -->
 				<!-- /.row -->
 
-			</div>
-			<!-- /.container -->
+			<!-- </div> -->
+			
+			<%-- <%@ include file="./header/footer.jsp" %> --%>
 
-		</div>
+		</div><!-- /.container -->
 
-		<%@include file="./header/footer.jsp"%>
+		
 
 		<!-- Bootstrap core JavaScript -->
-		<script src="${js }/jquery.min.js"></script>
+		 <script src="${js }/jquery.min.js"></script>
 
 		<!-- Jquery validator -->
-		<script src="${js}/jquery.validate.js"></script>
+	<script src="${js}/jquery.validate.js"></script> 
 
-		<script src="${js }/bootstrap.bundle.min.js"></script>
+		 <script src="${js }/bootstrap.bundle.min.js"></script>
 
 		<!-- DataTable plugin -->
-		<script src="${js }/jquery.dataTables.js"></script>
+		<script src="${js }/jquery.dataTables.js"></script> 
 
 		<!-- Self coded js file -->
 		<script src="<c:url value="/resources/js/mainApp.js" />"></script>
 		<%-- <script src="${js }/myApp.js"> --%>
-		</script>
-
+		
 	</div>
 </body>
 

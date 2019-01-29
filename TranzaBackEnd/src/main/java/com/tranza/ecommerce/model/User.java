@@ -1,6 +1,7 @@
 package com.tranza.ecommerce.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,16 +10,18 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="user")
+@Component
 public class User implements Serializable {
 	
 	/**
@@ -49,7 +52,7 @@ public class User implements Serializable {
 	private String role;
 	
 	@NotBlank(message = "Entrez votre mot de Pass")
-	@Size(min = 6 , max=60)
+	@Size(min = 6 , max=60 , message = "Le mot de pass doit etre entre 6 a 60 characteres" )
 	private String password;
 	
 	@Transient
@@ -59,6 +62,12 @@ public class User implements Serializable {
 	
 	@OneToOne(mappedBy="user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Cart cart;
+	
+	
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+	private Set<Orders> orders;
+	//private Orders orders;
+	
 	
 	//Add more fields
 	

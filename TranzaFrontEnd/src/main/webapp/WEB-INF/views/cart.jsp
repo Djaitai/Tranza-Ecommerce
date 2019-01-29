@@ -126,7 +126,7 @@
 							<%-- <c:if test="${cartLine.available == true}"> --%>
 								<button type="submit" name="refreshCart" id="refreshCart" class="btn btn-info btn-sm" value="${cartLine.cartLineId}" ><span class="glyphicon glyphicon-refresh"></span></button>
 							<%-- </c:if>	 --%>											
-							<a href="${contextRoot}/cart/${cartLine.cartLineId}/remove" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>								
+							<a href="${contextRoot}/cart/${cartLine.cartLineId}/delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>								
 						</td>
 					</tr>
 					</c:forEach>

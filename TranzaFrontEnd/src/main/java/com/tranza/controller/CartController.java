@@ -27,26 +27,26 @@ public class CartController {
 		
 		if(result!=null) {
 			switch(result) {
-			/*	case "added":
+				case "added":
 					modelAndView.addObject("message", "Product has been successfully added inside cart!");					
-					cartService.validateCartLine();
+					//cartService.validateCartLine();
 					break;
 				case "unavailable":
-					mv.addObject("message", "Product quantity is not available!");					
-					break;*/
+					modelAndView.addObject("message", "Product quantity is not available!");					
+					break;
 				case "updated":
 					modelAndView.addObject("message", "Cart line has been updated successfully!");					
 					//cartService.validateCartLine();
 					break;
 				case "error":
-					modelAndView.addObject("message", "One or more items inside cart has been modified!");
+					modelAndView.addObject("message", "Something wrong here!!!");
 					break;
-				/*case "maximum":
-					mv.addObject("message", "Maximum limit for the item has been reached!");
+				case "maximum":
+					modelAndView.addObject("message", "Maximum limit for the item has been reached!");
 					break;
 				case "deleted":
-					mv.addObject("message", "CartLine has been successfully removed!");
-					break;*/
+					modelAndView.addObject("message", "CartLine has been successfully removed!");
+					break;
 
 			}
 		}
@@ -68,6 +68,20 @@ public class CartController {
 	public String udpateCartLine(@PathVariable int cartLineId, @RequestParam int count) {
 		String response = cartService.manageCartLine(cartLineId, count);		
 		return "redirect:/cart/show?"+response;		
+	}
+	
+	
+	@RequestMapping("/{cartLineId}/delete")
+	public String removeCartLine(@PathVariable int cartLineId) {
+		String response = cartService.deleteCartLine(cartLineId);
+		return "redirect:/cart/show?"+response;
+	}
+	
+	
+	@RequestMapping("/add/{productId}/product")
+	public String addCartLines(@PathVariable int productId) {
+		String response = cartService.addCartLine(productId);
+		return "redirect:/cart/show?"+response;
 	}
 
 }

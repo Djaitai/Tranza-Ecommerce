@@ -31,7 +31,7 @@ body {
 .content{
 	padding-bottom:  60px; /* height of footer*/
 }
-footer
+/* footer
 {
 	margin: 0;
 }
@@ -39,10 +39,10 @@ footer
 .footer
 {
 	position: absolute;
-	bottom: 15px; /** CHECK BACK FOOTER**/
+	bottom: 15px; * CHECK BACK FOOTER*
 	height: 60px;
 	
-}
+} */
 
 .dataTableImg{
 	width: 100px;

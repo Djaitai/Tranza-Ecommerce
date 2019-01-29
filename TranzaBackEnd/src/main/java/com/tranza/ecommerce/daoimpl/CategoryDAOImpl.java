@@ -79,5 +79,17 @@ public class CategoryDAOImpl implements CategoryDAO {
 			return null;
 		}
 	}
+
+	@Override
+	public Boolean updateCategory(Category category) {
+		try {			
+			sessionFactory.getCurrentSession().update(category);
+			return true;
+		}
+		catch(Exception ex) {		
+			ex.printStackTrace();			
+		}	
+		return null;
+	}
 	
 }

@@ -24,6 +24,7 @@ import com.tranza.ecommerce.dao.ProductDAO;
 import com.tranza.ecommerce.model.Category;
 import com.tranza.ecommerce.model.Product;
 import com.tranza.util.FileUploadUtility;
+import com.tranza.validator.CategoryValidator;
 import com.tranza.validator.ProductValidator;
 
 @Controller
@@ -124,6 +125,56 @@ public ModelAndView shoWEditProducts(@PathVariable int productId) {
 		return "redirect:/manage/products?operation=product";
 	}
 	
+	
+	
+	//To handleCategory submission
+		@RequestMapping(value="/category" , method=RequestMethod.POST)
+		public String handleCategorySubmission(@ModelAttribute Category category , BindingResult results , 
+				Model model  , HttpServletRequest request) {
+			
+			
+		
+		
+		//Handling image validation for new product
+		
+				if(category.getCategoryId() == 0) {
+					new CategoryValidator().validate(category, results);
+				}
+				else
+				{
+					if(!category.getFile().getOriginalFilename().equals("")) {
+						new ProductValidator().validate(category, results);
+					}
+				}	
+				//Check if there are any errors
+				if(results.hasErrors()) {
+					model.addAttribute("userClickManageProducts", true);
+					model.addAttribute("title" , "Manage Products");
+					model.addAttribute("message" , "Échec de la validation pour la soumission du produit");
+					//return "home";
+					return "manageProduct";
+					 //Or manageProduct if message does not display
+				}	
+				logger.info(category.toString());	
+				if(category.getCategoryId() == 0) {
+					//Create a new product record if product is is = to zero
+					categoryDAO.addCategory(category);
+				}
+				else {
+					//Updater the product if product id is not = to zero
+					categoryDAO.updateCategory(category);		
+				}	
+				if(!category.getFile().getOriginalFilename().equals("")) {
+					FileUploadUtility.uploadFile(request , category.getFile() , category.getCategoryCode());
+				}
+			
+			//categoryDAO.addCategory(category);
+			return "redirect:/manage/products/?operation=category";
+		}
+	
+	
+	
+	
 	@RequestMapping(value = "/product/{productId}/activation" , method = RequestMethod.POST)
 	@ResponseBody
 	public String handleProductActivation(@PathVariable int productId) {
@@ -138,15 +189,7 @@ public ModelAndView shoWEditProducts(@PathVariable int productId) {
 			"Vous avez réussi à désactiver le produit avec ID " + product.getProductId();
 	}
 	
-	
-	//To handleCategory submission
-	@RequestMapping(value="/category" , method=RequestMethod.POST)
-	public String handleCategorySubmission(@ModelAttribute Category category) {
-		
-		categoryDAO.addCategory(category);
-		return "redirect:/manage/products/?operation=category";
-	}
-	
+
 	
 	//Return all Categories for all the request mapping
 	@ModelAttribute("categories")

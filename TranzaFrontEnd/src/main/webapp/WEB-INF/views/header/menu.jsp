@@ -28,9 +28,13 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active"><a class="nav-link"
 						href="${contextRoot }/home">Accueil <span class="sr-only">(current)</span>
-					</a></li>
+						</a>
+					</li>
+
+		
+					
 					<li id="about" class="nav-item"><a class="nav-link"
-						href="${contextRoot }/about">À propos de nous</a></li>
+						href="${contextRoot }/about">Ã€ propos de nous</a></li>
 
 					<li id="contact" class="nav-item"><a class="nav-link"
 						href="${contextRoot }/contact">Nous Contacter</a></li>

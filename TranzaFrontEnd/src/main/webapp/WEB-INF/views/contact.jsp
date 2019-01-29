@@ -3,9 +3,11 @@
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<spring:url var="css" value="resources/css" />
+<%-- <spring:url var="css" value="resources/css" />
 <spring:url var="js" value="resources/js" />
-<spring:url var="images" value="resources/images" />
+<spring:url var="images" value="resources/images" /> --%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +29,7 @@
 <body>
 
 
-	<%@ include file="./header/menu.jsp"%>
+	<%@ include file="./header/header.jsp"%>
 
 	<div class="container">
 		<div class="row">
